@@ -34,8 +34,8 @@ public class Main {
             }
 
             String[] parts = inputString.split(" ");// Разбиваем пробелом введенную пользователем строку на массив
-            if (parts.length != 2) {
-                System.out.println("Не правильный ввод");
+            if (parts.length != 2) {// Проверяем состоит ли пользовательский ввод из двух частей
+                System.out.println("Неправильный ввод");
             } else {
                 continue;
             }
