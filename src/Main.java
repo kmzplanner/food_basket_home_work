@@ -33,7 +33,12 @@ public class Main {
                 break;
             }
 
-            String[] parts = inputString.split(" ");// Разбиваем пробелом введенную пользователем строку на массив.
+            String[] parts = inputString.split(" ");// Разбиваем пробелом введенную пользователем строку на массив
+            if (parts.length != 2) {
+                System.out.println("Не правильный ввод");
+            } else {
+                continue;
+            }
             productNumber = Integer.parseInt(parts[0]) - 1;// Преобразум в число первую часть массива и присваевам пере-
             //менной, которая выступит как индекс для массива basket (для этого и вычитаем 1, т.к. индексы начинаются с 0)
             productCount = Integer.parseInt(parts[1]);// Преобразуем в число вторую часть массива.
