@@ -14,8 +14,8 @@ public class Main {
 
         while (true) {
             int sumProducts = 0;
-            int productNumber = 0;
-            int productCount = 0;
+            int productNumber;
+            int productCount;
             System.out.println("Выбирите товар и количество или введите 'end'");
             String inputString = scanner.nextLine();
             if (inputString.equals("end")) {
