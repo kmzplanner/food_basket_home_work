@@ -36,20 +36,24 @@ public class Main {
             String[] parts = inputString.split(" ");// Разбиваем пробелом введенную пользователем строку на массив
 
             if (parts.length != 2) { // ПРОВЕРЯЕМ СОСТОИТ ЛИ ПОЛЬЗОВАТЕЛЬСКИЙ ВВОД ИЗ ДВУХ ЧАСТЕЙ
-                System.out.println("Неправильный ввод");
+                System.out.println("Неправильный ввод. Введите номер и количество продукта через пробел или 'end' ");
             } else {
-                productNumber = Integer.parseInt(parts[0]);// Преобразум в число первую часть массива,для дальнейшего
-                //приобразования в индекс (вычтем еденицу) при заполнении в массиве basket
+                // ЛОВИМ ВВЕЛ ЛИ ПОЛЬЗОВАТЕЛЬ ЧИСЛА, А НЕ ТЕКСТ
+                try {productNumber = Integer.parseInt(parts[0]);// Преобразум в число первую часть массива,для дальнейшего
+                    //приобразования в индекс (вычтем еденицу) при заполнении в массиве basket
 
-                if (productNumber > basket.length || productNumber < 0 || productNumber == 0) { // ПРОВЕРЯЕМ ПОДХОДЯТ ЛИ
-                    // ВВЕДЕНЫЕ ПОЛЬЗОВАТЕЛЕМ ДАННЫЕ НА РОЛЬ ПРОДУКТА
-                    System.out.println("Неправильнй ввод номера продукта");
-                } else {
-                    productCount = Integer.parseInt(parts[1]);// Преобразуем в число вторую часть массива.
-                    basket[productNumber - 1] += productCount;// Прибавим к значению в массиве вторую часть
-                    // под приобразованную  в индекс (вычли 1) 1-ую часть
+                    if (productNumber > basket.length || productNumber < 0 || productNumber == 0) { // ПРОВЕРЯЕМ ПОДХОДЯТ ЛИ
+                        // ВВЕДЕНЫЕ ПОЛЬЗОВАТЕЛЕМ ДАННЫЕ НА РОЛЬ НОМЕРА ПРОДУКТА
+                        System.out.println("Неправильнй ввод номера продукта");
+                    } else {
+                        productCount = Integer.parseInt(parts[1]);// Преобразуем в число вторую часть массива.
+                        basket[productNumber - 1] += productCount;// Прибавим к значению в массиве вторую часть
+                        // под приобразованную  в индекс (вычли 1) 1-ую часть
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Неправильный ввод. Введите числа");
+                    continue;
                 }
-
 
             }
         }
