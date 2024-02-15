@@ -14,8 +14,8 @@ public class Main {
 
         while (true) {
             int sumProducts = 0;
-            int productNumber;
-            int productCount;
+            int productNumber = 0;
+            int productCount = 0;
             System.out.println("Выбирите товар и количество или введите 'end'");
             String inputString = scanner.nextLine();
             if (inputString.equals("end")) {
@@ -34,15 +34,24 @@ public class Main {
             }
 
             String[] parts = inputString.split(" ");// Разбиваем пробелом введенную пользователем строку на массив
-            if (parts.length != 2) {// Проверяем состоит ли пользовательский ввод из двух частей
+
+            if (parts.length != 2) { // ПРОВЕРЯЕМ СОСТОИТ ЛИ ПОЛЬЗОВАТЕЛЬСКИЙ ВВОД ИЗ ДВУХ ЧАСТЕЙ
                 System.out.println("Неправильный ввод");
             } else {
-                continue;
+                productNumber = Integer.parseInt(parts[0]);// Преобразум в число первую часть массива,для дальнейшего
+                //приобразования в индекс (вычтем еденицу) при заполнении в массиве basket
+
+                if (productNumber > basket.length || productNumber < 0 || productNumber == 0) { // ПРОВЕРЯЕМ ПОДХОДЯТ ЛИ
+                    // ВВЕДЕНЫЕ ПОЛЬЗОВАТЕЛЕМ ДАННЫЕ НА РОЛЬ ПРОДУКТА
+                    System.out.println("Неправильнй ввод номера продукта");
+                } else {
+                    productCount = Integer.parseInt(parts[1]);// Преобразуем в число вторую часть массива.
+                    basket[productNumber - 1] += productCount;// Прибавим к значению в массиве вторую часть
+                    // под приобразованную  в индекс (вычли 1) 1-ую часть
+                }
+
+
             }
-            productNumber = Integer.parseInt(parts[0]) - 1;// Преобразум в число первую часть массива и присваевам пере-
-            //менной, которая выступит как индекс для массива basket (для этого и вычитаем 1, т.к. индексы начинаются с 0)
-            productCount = Integer.parseInt(parts[1]);// Преобразуем в число вторую часть массива.
-            basket[productNumber] += productCount;// Прибавим к значению в массиве вторую часть под приобразованную в индекс 1-ую часть
         }
     }
 }
